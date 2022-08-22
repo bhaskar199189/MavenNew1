@@ -1,25 +1,12 @@
 @Library('mylibrary')_
 node("built-in")
 {
-    stage('ContDownload_Master')
+    stage('ContDownload_Loans')
     {
         cicd.newGit("https://github.com/intelliqittrainings/maven.git")
     }
-    stage('ContBuild_Master')
+    stage('ContBuild_Loans')
     {
         cicd.newMaven()
-    }
-    stage('Contdeployment_Master')
-    {
-        cicd.newDeploy("ScriptedPipelinewithSharedLibraries","172.31.7.34","testapp")
-    }
-    stage('ContTesting_Master')
-    {
-        cicd.newGit("https://github.com/intelliqittrainings/FunctionalTesting.git")
-        cicd.runSelenium("ScriptedPipelinewithSharedLibraries")
-    }
-    stage('ContDelivery_Master')
-    {
-        cicd.newDeploy("ScriptedPipelinewithSharedLibraries","172.31.9.55","prodapp")
     }
 }
